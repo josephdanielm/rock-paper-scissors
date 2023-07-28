@@ -10,11 +10,15 @@ function getComputerChoice() {
     }
 }
 
+// Variables to keep track of wins
+let playerWins = 0
+,   computerWins = 0;
 
 function playRound(playerSelection, computerSelection) {
     
     // If selections are equal, return 'Draw!'
     if (playerSelection.toLowerCase() == computerSelection) {
+
         return 'Draw!';
     }
 
@@ -24,8 +28,10 @@ function playRound(playerSelection, computerSelection) {
         
         switch (computerSelection) {
             case 'paper':
+                computerWins = ++computerWins;
                 return 'You Lose! Paper beats Rock';
             case 'scissors':
+                playerWins = ++playerWins;
                 return 'You Win! Rock beats Scissors';
         }
 
@@ -34,8 +40,10 @@ function playRound(playerSelection, computerSelection) {
 
         switch (computerSelection) {
             case 'scissors':
+                computerWins = ++computerWins;
                 return 'You Lose! Scissors beat Paper';
             case 'rock':
+                playerWins = ++playerWins;
                 return 'You Win! Paper beats Rock';
         }
 
@@ -44,8 +52,10 @@ function playRound(playerSelection, computerSelection) {
 
         switch (computerSelection) {
             case 'rock':
+                computerWins = ++computerWins;
                 return 'You Lose! Rock beats Scissors';
             case 'paper':
+                playerWins = ++playerWins;
                 return 'You Win! Scissors beat Paper!';
         }
 
@@ -53,8 +63,17 @@ function playRound(playerSelection, computerSelection) {
 }
 
 
+// Plays 5 rounds of rock, paper, scissors, keeps track of wins, and logs the final result
+function game() {
+    for (let i = 0; i < 5; i++) {
+        let playerChoice = prompt('Rock, Paper, or Scissors?');
+        
+        playRound(playerChoice.toLowerCase(), getComputerChoice());
+        console.log(playerWins, computerWins);
 
-// Temporary test 
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+    }
+    
+    console.log(playerWins > computerWins ? 'Congratulations, you beat the Computer!' : 'Oh no! The Computer won!');
+}
+
+game();
