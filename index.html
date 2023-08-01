@@ -4,28 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style src="style.css"></style>
+    <link rel="stylesheet" href="style.css"></style>
     <script src="script.js" defer></script>
 </head>
 <body>
 
     <div id="scoreboard">
 
-        <div id="player-card">
-            <h1>Player</h1>
-            <h3 id="player-score">0</h3>
-        </div>
+        <div class="card-container">
+            <div id="player-card">
+                <h1>Player</h1>
+                <h3 id="player-score">0</h3>
+            </div>
 
-        <div id="computer-card">
-            <h1>Computer</h1>
-            <h3 id="computer-score">0</h3>
-        </div>  
+            <div id="computer-card">
+                <h1>Computer</h1>
+                <h3 id="computer-score">0</h3>
+            </div>  
+        </div>    
 
+        <div id="result">Rock, paper, or scissors?</div>
     </div>
 
-    <button id="rock">Rock</button>
-    <button id="paper">Paper</button>
-    <button id="scissors">Scissors</button>
 
+    <div class="choices">
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+    </div>
+    
 </body>
 </html>

@@ -68,8 +68,14 @@ btn.forEach(
     function(item) {
         item.addEventListener('click', function(e) {
             console.log(playRound(this.id, getComputerChoice()));
+            document.getElementById('player-score').innerHTML = playerWins;
+            document.getElementById('computer-score').innerHTML = computerWins;
         })
     }
 )
+
+if (playerWins == 5 || computerWins == 5) {
+    
+}
 
 //game();
