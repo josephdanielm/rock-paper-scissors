@@ -19,7 +19,8 @@ function playRound(playerSelection, computerSelection) {
     // If selections are equal, return 'Draw!'
     if (playerSelection.toLowerCase() == computerSelection) {
 
-        return 'Draw!';
+        printResult('Draw!');
+        return;
     }
 
 
@@ -29,10 +30,12 @@ function playRound(playerSelection, computerSelection) {
         switch (computerSelection) {
             case 'paper':
                 computerWins = ++computerWins;
-                return 'You Lose! Paper beats Rock';
+                printResult('You Lose! Paper beats Rock');
+                break;
             case 'scissors':
                 playerWins = ++playerWins;
-                return 'You Win! Rock beats Scissors';
+                printResult('You Win! Rock beats Scissors');
+                break;
         }
 
     // Player choose paper
@@ -41,10 +44,12 @@ function playRound(playerSelection, computerSelection) {
         switch (computerSelection) {
             case 'scissors':
                 computerWins = ++computerWins;
-                return 'You Lose! Scissors beat Paper';
+                printResult('You Lose! Scissors beat Paper');
+                break;
             case 'rock':
                 playerWins = ++playerWins;
-                return 'You Win! Paper beats Rock';
+                printResult('You Win! Paper beats Rock');
+                break;
         }
 
     // Player choose scissors
@@ -53,10 +58,12 @@ function playRound(playerSelection, computerSelection) {
         switch (computerSelection) {
             case 'rock':
                 computerWins = ++computerWins;
-                return 'You Lose! Rock beats Scissors';
+                printResult('You Lose! Rock beats Scissors');
+                break;
             case 'paper':
                 playerWins = ++playerWins;
-                return 'You Win! Scissors beat Paper!';
+                printResult('You Win! Scissors beat Paper!');
+                break;
         }
 
     }
@@ -66,16 +73,37 @@ let btn = document.querySelectorAll('button');
 
 btn.forEach(
     function(item) {
-        item.addEventListener('click', function(e) {
+        item.addEventListener('click', function buttonHandler(e) {
             console.log(playRound(this.id, getComputerChoice()));
             document.getElementById('player-score').innerHTML = playerWins;
             document.getElementById('computer-score').innerHTML = computerWins;
+            evaluateRound(playerWins, computerWins);
         })
     }
 )
 
-if (playerWins == 5 || computerWins == 5) {
-    
+// Updates result div with inputted string
+function printResult(string) {
+    document.getElementById('result').textContent = string;
 }
+
+
+function removeClickListener(button) {
+    const clonedButton = button.cloneNode(true);
+    button.parentNode.replaceChild(clonedButton, button);
+}
+
+// evaluates, posts winner, removes functionality from buttons
+function evaluateRound(playerWin, computerWin) {
+    if (playerWin >= 5) {
+        printResult('Congratulations, you won!');
+        btn.forEach(button => removeClickListener(button));
+        
+    } else if (computerWin >= 5) {
+        printResult('Looks like the computer won this time!');
+        btn.forEach(button => removeClickListener(button));
+    }
+}
+
 
 //game();

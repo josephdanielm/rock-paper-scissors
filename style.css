@@ -6,13 +6,20 @@
 #result {
     text-align: center;
     font-size: 20px;
+    color: #6C584C;
 }
 
 #scoreboard {
     display: flex;
-    background-color: rgb(132, 196, 98);
+    background-color: #DDE5B6;
     justify-content: space-evenly;
     flex-direction: column;
+    border-radius: 6px;
+    border: 3px solid;
+    border-color: #ADC178;
+    width: 600px;
+    padding: 15px;
+
 }
 
 #player-card,
@@ -20,10 +27,34 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: #6C584C;
 }
 
 .choices {
     display: flex;
     justify-content: space-evenly;
     margin-top: 20px;
+    gap: 40px;
+}
+
+button {
+    background-color: #DDE5B6;
+    color: #6C584C;
+    border-color: #ADC178;
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 30px;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background-color: #F0EAD2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
