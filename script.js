@@ -93,7 +93,7 @@ function removeClickListener(button) {
     button.parentNode.replaceChild(clonedButton, button);
 }
 
-// evaluates, posts winner, removes functionality from buttons
+// Evaluates, posts winner, removes functionality from buttons
 function evaluateRound(playerWin, computerWin) {
     if (playerWin >= 5) {
         printResult('Congratulations, you won!');
@@ -104,6 +104,3 @@ function evaluateRound(playerWin, computerWin) {
         btn.forEach(button => removeClickListener(button));
     }
 }
-
-
-//game();
