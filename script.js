@@ -62,18 +62,14 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+let btn = document.querySelectorAll('button');
 
-// Plays 5 rounds of rock, paper, scissors, keeps track of wins, and logs the final result
-function game() {
-    for (let i = 0; i < 5; i++) {
-        let playerChoice = prompt('Rock, Paper, or Scissors?');
-        
-        playRound(playerChoice.toLowerCase(), getComputerChoice());
-        console.log(playerWins, computerWins);
-
+btn.forEach(
+    function(item) {
+        item.addEventListener('click', function(e) {
+            console.log(playRound(this.id, getComputerChoice()));
+        })
     }
-    
-    console.log(playerWins > computerWins ? 'Congratulations, you beat the Computer!' : 'Oh no! The Computer won!');
-}
+)
 
-game();
+//game();
